@@ -10,53 +10,44 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class CAMainTableViewController: UIViewController, UITableViewDelegate
-{
+final class CAMainTableViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
-    lazy var viewModel: CAMainViewModel = {
-        return CAMainViewModel()
-    }()
+    let viewModel = CAMainViewModel()
     var disposeBag = DisposeBag()
+    var didTouchWebView: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindTableView()
-        viewModel.requestMain()
     }
 
     private func bindTableView() {
-        viewModel.data
+        viewModel.mainModel
             .bind(to: tableView.rx.items) { tableView, row, element -> UITableViewCell in
-                guard let type = TableRow(rawValue: row) else { return UITableViewCell() }
-                switch type {
+                switch element.type {
                 case .head:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CAMainHeadTableViewCell.identifier) as? CAMainHeadTableViewCell else { return UITableViewCell() }
                     cell.didTouchInstruction = { [weak self] in
-                        // 웹뷰 띄우기
+                        self?.didTouchWebView?()
                     }
                     return cell
                 case .nation:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CAMainNationTableViewCell.identifier) as? CAMainNationTableViewCell else { return UITableViewCell() }
-                    if let model = self.viewModel.mainModel {
-                        cell.viewModel = model
+                    if let model = element.model as? CAMainModel {
+                        cell.model = model
                     }
                     return cell
-                case .location:
+                case .rank:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CAMainRankingTableViewCell.identifier) as? CAMainRankingTableViewCell else { return UITableViewCell() }
+                    if let rankModel = element.model as? [CALocalModel] {
+                        cell.viewModel.rankModel = rankModel
+                    }
                     return cell
                 }
         }
         .disposed(by: disposeBag)
     }
-
-//    private func initViewModel() {
-//        viewModel.didSuccessGetMainData = {
-//            self.tableView.reloadData()
-//        }
-//
-//        viewModel.requestMain()
-//    }
 }

@@ -30,20 +30,8 @@ class CAMainRankingTableViewCell: UITableViewCell {
     private func bind() {
         viewModel.itemsObservable
             .bind(to: collectionView.rx.items(cellIdentifier: CARankCollectionViewCell.id, cellType: CARankCollectionViewCell.self)) { index, item, cell in
-
-                self.pageControl.currentPage = index
-
-                switch index {
-                case 0:
-                    let newRanks = self.viewModel.ranks[0...5]
-                    cell.setRanks(Array(newRanks), index)
-                case 1:
-                    let newRanks = self.viewModel.ranks[6...11]
-                    cell.setRanks(Array(newRanks), index)
-                default:
-                    let newRanks = self.viewModel.ranks[12...17]
-                    cell.setRanks(Array(newRanks), index)
-                }
+                self.pageControl.currentPage = item.index
+                cell.setRanks(item.ranks, item.index)
         }
         .disposed(by: disposeBag)
     }

@@ -26,6 +26,6 @@ final class CARankCollectionViewCell: UICollectionViewCell {
         rankLabels.forEach { $0.text = "\(($0.tag+1)+6*index)" }
         locationLabels.forEach { $0.text = models[$0.tag].location }
         percentLabels.forEach { $0.text = "\(models[$0.tag].percent)%" }
-        totalLabels.forEach { $0.text = "\(models[$0.tag].total)(\(models[$0.tag].increase))" }
+        totalLabels.forEach { $0.text = "\(models[$0.tag].total.withCommas())(+\(models[$0.tag].increase))" }
     }
 }

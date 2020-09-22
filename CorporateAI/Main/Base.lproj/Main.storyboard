@@ -54,6 +54,7 @@
                     </view>
                     <connections>
                         <outlet property="recordButton" destination="LKk-UH-idI" id="BMz-qd-tCy"/>
+                        <segue destination="MdU-T0-HBc" kind="presentation" identifier="showWebView" modalPresentationStyle="fullScreen" id="1sZ-Ct-AhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -314,7 +315,6 @@
                                                                                 <constraints>
                                                                                     <constraint firstItem="Bfz-D7-IgB" firstAttribute="top" secondItem="R1u-nK-3UK" secondAttribute="bottom" constant="16" id="2sI-BA-1Cc"/>
                                                                                     <constraint firstItem="hY1-pO-pOg" firstAttribute="leading" secondItem="Bfz-D7-IgB" secondAttribute="trailing" constant="8" id="5eb-mV-LUJ"/>
-                                                                                    <constraint firstItem="fi0-Xe-MM0" firstAttribute="leading" secondItem="hY1-pO-pOg" secondAttribute="trailing" constant="16" id="GWC-LI-cyH"/>
                                                                                     <constraint firstItem="hY1-pO-pOg" firstAttribute="centerY" secondItem="Bfz-D7-IgB" secondAttribute="centerY" id="J2L-DL-xoz"/>
                                                                                     <constraint firstItem="R1u-nK-3UK" firstAttribute="top" secondItem="Wc1-mW-ew5" secondAttribute="top" id="NWN-Xm-ASQ"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="Bfz-D7-IgB" secondAttribute="bottom" constant="16" id="NjN-9S-P8x"/>
@@ -323,7 +323,6 @@
                                                                                     <constraint firstItem="fi0-Xe-MM0" firstAttribute="centerY" secondItem="Bfz-D7-IgB" secondAttribute="centerY" id="ZQ3-am-Oib"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="R1u-nK-3UK" secondAttribute="trailing" id="gJo-q3-Jg7"/>
                                                                                     <constraint firstItem="Bfz-D7-IgB" firstAttribute="leading" secondItem="Wc1-mW-ew5" secondAttribute="leading" id="pbL-ik-egZ"/>
-                                                                                    <constraint firstItem="QRE-sw-lkS" firstAttribute="leading" secondItem="fi0-Xe-MM0" secondAttribute="trailing" constant="20" id="reu-aI-6ia"/>
                                                                                     <constraint firstItem="R1u-nK-3UK" firstAttribute="leading" secondItem="Wc1-mW-ew5" secondAttribute="leading" id="sgK-sD-Ii5"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="QRE-sw-lkS" secondAttribute="trailing" constant="16" id="yx0-jM-0Ui"/>
                                                                                 </constraints>
@@ -389,7 +388,6 @@
                                                                                     <constraint firstItem="FjY-Ty-XWt" firstAttribute="leading" secondItem="rvY-Zu-dSC" secondAttribute="trailing" constant="20" id="Owv-ao-qYR"/>
                                                                                     <constraint firstItem="aFw-Ky-3bR" firstAttribute="leading" secondItem="xRz-un-2tY" secondAttribute="trailing" constant="8" id="Rmx-2k-iqw"/>
                                                                                     <constraint firstItem="rvY-Zu-dSC" firstAttribute="centerY" secondItem="xRz-un-2tY" secondAttribute="centerY" id="SxJ-8e-Zj6"/>
-                                                                                    <constraint firstItem="rvY-Zu-dSC" firstAttribute="leading" secondItem="aFw-Ky-3bR" secondAttribute="trailing" constant="16" id="WLz-kM-fpP"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="KFZ-7i-XNU" secondAttribute="trailing" id="XjZ-Q6-Zc2"/>
                                                                                     <constraint firstItem="xRz-un-2tY" firstAttribute="top" secondItem="KFZ-7i-XNU" secondAttribute="bottom" constant="16" id="nt9-Cg-fJi"/>
                                                                                     <constraint firstAttribute="height" constant="63" id="tLH-AE-oa3"/>
@@ -457,7 +455,6 @@
                                                                                     <constraint firstItem="Rf8-Ri-nje" firstAttribute="centerY" secondItem="jl2-SY-mnH" secondAttribute="centerY" id="R1T-7A-jhZ"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="CnD-w7-Sma" secondAttribute="trailing" id="VRc-94-4xW"/>
                                                                                     <constraint firstItem="6Gb-kv-fb5" firstAttribute="centerY" secondItem="jl2-SY-mnH" secondAttribute="centerY" id="Wth-om-pRW"/>
-                                                                                    <constraint firstItem="6Gb-kv-fb5" firstAttribute="leading" secondItem="FXd-KB-1Bw" secondAttribute="trailing" constant="16" id="g01-Rd-Gda"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="Rf8-Ri-nje" secondAttribute="trailing" constant="16" id="gL4-Xy-mzQ"/>
                                                                                     <constraint firstItem="CnD-w7-Sma" firstAttribute="leading" secondItem="141-do-tNr" secondAttribute="leading" id="oTg-Lq-ZSC"/>
                                                                                     <constraint firstItem="CnD-w7-Sma" firstAttribute="top" secondItem="141-do-tNr" secondAttribute="top" id="rbi-WC-kfn"/>
@@ -522,7 +519,6 @@
                                                                                     <constraint firstItem="HUE-mZ-XJU" firstAttribute="centerY" secondItem="OlO-up-iym" secondAttribute="centerY" id="TIH-4D-d1d"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="OlO-up-iym" secondAttribute="bottom" constant="16" id="U5V-E6-nUT"/>
                                                                                     <constraint firstItem="wAJ-BI-bm3" firstAttribute="centerY" secondItem="OlO-up-iym" secondAttribute="centerY" id="XIo-JL-nyE"/>
-                                                                                    <constraint firstItem="QM1-1T-Uje" firstAttribute="leading" secondItem="wAJ-BI-bm3" secondAttribute="trailing" constant="16" id="XeJ-hq-T3D"/>
                                                                                     <constraint firstItem="OlO-up-iym" firstAttribute="top" secondItem="gzJ-6t-HkD" secondAttribute="bottom" constant="16" id="ZZs-PX-z99"/>
                                                                                     <constraint firstItem="QM1-1T-Uje" firstAttribute="centerY" secondItem="OlO-up-iym" secondAttribute="centerY" id="cve-1X-ozx"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="HUE-mZ-XJU" secondAttribute="trailing" constant="16" id="eC6-46-OwM"/>
@@ -533,6 +529,13 @@
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="fi0-Xe-MM0" firstAttribute="trailing" secondItem="5QE-fI-3ad" secondAttribute="trailing" id="8M4-63-TmS"/>
+                                                                            <constraint firstItem="rvY-Zu-dSC" firstAttribute="leading" secondItem="5QE-fI-3ad" secondAttribute="leading" id="K49-yf-jTv"/>
+                                                                            <constraint firstItem="QM1-1T-Uje" firstAttribute="leading" secondItem="5QE-fI-3ad" secondAttribute="leading" id="LUP-Br-QaM"/>
+                                                                            <constraint firstItem="6Gb-kv-fb5" firstAttribute="leading" secondItem="5QE-fI-3ad" secondAttribute="leading" id="MIN-3z-HpQ"/>
+                                                                            <constraint firstItem="fi0-Xe-MM0" firstAttribute="leading" secondItem="5QE-fI-3ad" secondAttribute="leading" id="bOW-ux-ZRy"/>
+                                                                        </constraints>
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
@@ -632,7 +635,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                    <state key="normal" title="코로나관련 정부 지침 현황 확인" image="speaker">
+                                                    <state key="normal" title="코로나19 정책 뉴스 &amp; 이슈" image="speaker">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
@@ -849,11 +852,110 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQ3-Nl-xml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963.76811594202911" y="136.60714285714286"/>
+            <point key="canvasLocation" x="1000" y="-223"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="sCw-HR-MTk">
+            <objects>
+                <viewController id="ewa-xr-AL0" customClass="CAWebViewController" customModule="CorporateAI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pMy-9F-Lpy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-hE-2hO">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <barButtonItem image="arrow.left" catalog="system" id="EXM-bF-EUb">
+                                        <connections>
+                                            <action selector="goBack:" destination="ewa-xr-AL0" id="DOS-Nk-9Lz"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ybg-PP-16u"/>
+                                    <barButtonItem image="arrow.right" catalog="system" id="Uhz-nR-3hr">
+                                        <connections>
+                                            <action selector="goForward:" destination="ewa-xr-AL0" id="21x-kP-AVu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Dif-fn-Ray"/>
+                                    <barButtonItem image="arrow.counterclockwise" catalog="system" id="lgL-cu-thq">
+                                        <connections>
+                                            <action selector="refresh:" destination="ewa-xr-AL0" id="Cjc-s7-ZsZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dGm-tP-Ogi"/>
+                                    <barButtonItem image="house.fill" catalog="system" id="hOu-gY-GLQ">
+                                        <connections>
+                                            <action selector="goHome:" destination="ewa-xr-AL0" id="kGh-NR-Gez"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VE8-16-Poe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Gjf-hE-2hO" firstAttribute="top" secondItem="VE8-16-Poe" secondAttribute="bottom" id="BGc-g9-7Pl"/>
+                            <constraint firstAttribute="trailing" secondItem="Gjf-hE-2hO" secondAttribute="trailing" id="ICA-uy-m8b"/>
+                            <constraint firstItem="uCk-FK-8pp" firstAttribute="bottom" secondItem="Gjf-hE-2hO" secondAttribute="bottom" id="NVU-RW-dPt"/>
+                            <constraint firstItem="uCk-FK-8pp" firstAttribute="trailing" secondItem="VE8-16-Poe" secondAttribute="trailing" id="Pyl-t8-fXX"/>
+                            <constraint firstItem="VE8-16-Poe" firstAttribute="leading" secondItem="uCk-FK-8pp" secondAttribute="leading" id="mhL-3x-xDV"/>
+                            <constraint firstItem="VE8-16-Poe" firstAttribute="top" secondItem="uCk-FK-8pp" secondAttribute="top" id="oWo-Kk-svD"/>
+                            <constraint firstItem="Gjf-hE-2hO" firstAttribute="leading" secondItem="uCk-FK-8pp" secondAttribute="leading" id="qft-kp-suj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uCk-FK-8pp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fkr-fD-SDa">
+                        <barButtonItem key="rightBarButtonItem" image="multiply" catalog="system" id="mGC-Hx-XS5">
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeButton:" destination="ewa-xr-AL0" id="e41-lP-pYm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="VE8-16-Poe" id="tfh-zI-CwG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Bo-uH-Clx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2626.0869565217395" y="137.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BZW-Y3-Egn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MdU-T0-HBc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Fy-Xo-G4R">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ewa-xr-AL0" kind="relationship" relationship="rootViewController" id="7ez-67-C7r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gqh-jY-qQJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715.9420289855075" y="137.94642857142856"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="chevron" width="16" height="9"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="record" width="24" height="35"/>
         <image name="speaker" width="11" height="16"/>
     </resources>

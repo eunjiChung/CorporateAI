@@ -16,42 +16,44 @@ struct RankModel {
     var increase: Int
 }
 
+struct CARankSectionModel {
+    var index: Int
+    var ranks: [RankModel]
+}
+
 final class CARankCellViewModel {
 
-    let ranks = [
-        RankModel(location: "대구", percent: 46.0, total: 6972, increase: 9),
-        RankModel(location: "서울", percent: 16.2, total: 2749, increase: 124),
-        RankModel(location: "경기", percent: 14.1, total: 2402, increase: 95),
-        RankModel(location: "경북", percent: 8.4, total: 1435, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4),
-        RankModel(location: "검역", percent: 7.0, total: 1314, increase: 4)
-    ]
+    // MARK: - Properties
+    var rankModel: [CALocalModel]? {
+        didSet {
+            bindToList()
+            generateMain()
+        }
+    }
+    var ranks: [RankModel] = []
+    var itemsObservable = PublishSubject<[CARankSectionModel]>()
 
-    var itemsObservable = BehaviorSubject<[Int]>(value: [0, 1, 2])
-
+    // MARK: - Init
     init() {
+
     }
 
-    func requestRankList() {
-        CANetworkAdapter.requestRx(target: CACoronaAPI.rank)
-            .subscribe(onNext: { data in
+    // MARK: - Private Methods
+    private func bindToList() {
+        guard let rankModel = self.rankModel, !rankModel.isEmpty else { return }
+        var result: [RankModel] = []
+        rankModel.forEach {
+            result.append(RankModel(location: $0.gubun, percent: Double($0.qurRate)!, total: $0.defCnt, increase: Int($0.incDec)!))
+        }
+        ranks = result
+    }
 
-            }, onError: { error in
-
-            }, onCompleted: {
-
-            })
+    private func generateMain() {
+        let result: [CARankSectionModel] = [
+            CARankSectionModel(index: 0, ranks: Array(ranks[0...5])),
+            CARankSectionModel(index: 1, ranks: Array(ranks[6...11])),
+            CARankSectionModel(index: 2, ranks: Array(ranks[12...])),
+        ]
+        itemsObservable.onNext(result)
     }
 }

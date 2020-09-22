@@ -41,6 +41,7 @@ extension CAMainViewController {
     
     enum SegueIdentifier: String {
         case showDetail
+        case showWebView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +50,11 @@ extension CAMainViewController {
         switch id {
         case .showDetail:
             guard let destination = segue.destination as? CAMainTableViewController else { return }
-            
+            destination.didTouchWebView = {
+                self.performSegue(withIdentifier: "showWebView", sender: nil)
+            }
+        case .showWebView:
+            print("showing")
         }
     }
 }

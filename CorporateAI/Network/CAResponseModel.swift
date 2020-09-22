@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct CAResultModel: Decodable {
+struct CAResultModel<T: Decodable>: Decodable {
     var code: ResponseCode
     var message: String
-    var result: CAResultMeta
+    var result: CAResultMeta<T>
 }
 
-struct CAResultMeta: Decodable {
-    var resultMessage: CAMainModel
+struct CAResultMeta<T: Decodable>: Decodable {
+    var resultMessage: T
 }
 
 struct CAMainModel: Decodable {
@@ -23,8 +23,9 @@ struct CAMainModel: Decodable {
     var incDec: String
     var localOccCnt: Int
     var locals: [CALocalModel]
-    var nations: [String]
+    var nations: CANationsModel
     var overFlowCnt: Int
+    var standardDt: String
 }
 
 struct CALocalModel: Decodable {

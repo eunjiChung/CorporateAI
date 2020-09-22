@@ -12,40 +12,46 @@ import RxSwift
 enum TableRow: Int, CaseIterable {
     case head = 0
     case nation
-    case location
+    case rank
+}
+
+struct CAMainSectionModel {
+    var type: TableRow
+    var model: Any
 }
 
 final class CAMainViewModel {
 
-    var data = BehaviorSubject<[TableRow]>(value: TableRow.allCases)
+    var mainModel = PublishSubject<[CAMainSectionModel]>()
 
-    var mainModel: CAMainModel?
-
-    var didSuccessGetMainData: (()->Void)?
+    init() {
+        requestMain()
+    }
 
     func requestMain() {
-        CANetworkAdapter.requestRx(target: CACoronaAPI.main)
+        _ = CANetworkAdapter.requestRx(target: CACoronaAPI.main)
             .subscribe(onNext: { data in
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        let jsonData = try Data(base64Encoded: json["result"] as? String ?? "")
-                        print("jsonData", jsonData)
-                        print("====================================================")
-                        let result = try JSONDecoder().decode(CAResultMeta.self, from: jsonData!)
-                        print("result", result)
-                        //                    let jsonData = try Data(base64Encoded: json["result"] as? String)
-                        //                    let result = try JSONDecoder().decode(CAResultMeta.self, from: jsonData)
-                        //                    let result = json["result"] as? CAResultMeta
-                        //                    self.mainModel = result?.resultMessage
-                        //                    self.didSuccessGetMainData?()
-                    }
+                    let model = try JSONDecoder().decode(CAResultModel<CAMainModel>.self, from: data)
+                    let result = model.result
+                    self.generateMain(model: result.resultMessage)
                 } catch {
-                    print(error.localizedDescription)
+                    print("❤️", error.localizedDescription)
                 }
             }, onError: { error in
-                print(error.localizedDescription)
+                print("❤️", error.localizedDescription)
             }, onCompleted: {
                 print("Completed!!!")
             })
+    }
+
+    // MARK: - Private Methods
+    private func generateMain(model: CAMainModel) {
+        let result: [CAMainSectionModel] = [
+            CAMainSectionModel(type: .head, model: ""),
+            CAMainSectionModel(type: .nation, model: model),
+            CAMainSectionModel(type: .rank, model: model.locals)
+        ]
+        mainModel.onNext(result)
     }
 }

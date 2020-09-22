@@ -13,6 +13,9 @@
 		B63A230624F109920028A20F /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63A230524F109920028A20F /* Chat.storyboard */; };
 		B63A230824F10B9B0028A20F /* CAURLString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A230724F10B9B0028A20F /* CAURLString.swift */; };
 		B63A230A24F10D950028A20F /* CANetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A230924F10D950028A20F /* CANetworkAdapter.swift */; };
+		B65150F9251A0CEA00668FE6 /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65150F8251A0CEA00668FE6 /* Int+.swift */; };
+		B65150FB251A10F000668FE6 /* CAWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65150FA251A10F000668FE6 /* CAWebViewController.swift */; };
+		B65150FD251A112800668FE6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65150FC251A112800668FE6 /* WebKit.framework */; };
 		B65BFD812518D1AC0087EEC7 /* CAMyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BFD802518D1AC0087EEC7 /* CAMyMessageTableViewCell.swift */; };
 		B65BFD832518D1D60087EEC7 /* CABotMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BFD822518D1D60087EEC7 /* CABotMessageTableViewCell.swift */; };
 		B65BFD852518D1F90087EEC7 /* CABotImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65BFD842518D1F90087EEC7 /* CABotImageTableViewCell.swift */; };
@@ -41,6 +44,9 @@
 		B63A230524F109920028A20F /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		B63A230724F10B9B0028A20F /* CAURLString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAURLString.swift; sourceTree = "<group>"; };
 		B63A230924F10D950028A20F /* CANetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CANetworkAdapter.swift; sourceTree = "<group>"; };
+		B65150F8251A0CEA00668FE6 /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		B65150FA251A10F000668FE6 /* CAWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAWebViewController.swift; sourceTree = "<group>"; };
+		B65150FC251A112800668FE6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B65BFD802518D1AC0087EEC7 /* CAMyMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAMyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B65BFD822518D1D60087EEC7 /* CABotMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABotMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B65BFD842518D1F90087EEC7 /* CABotImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CABotImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65150FD251A112800668FE6 /* WebKit.framework in Frameworks */,
 				92CC8A4145453DEDCDDDEE20 /* Pods_CorporateAI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +88,7 @@
 		88D1355894B0CC7D13AFB999 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B65150FC251A112800668FE6 /* WebKit.framework */,
 				CC0924AF402A75B95F50E512 /* Pods_CorporateAI.framework */,
 			);
 			name = Frameworks;
@@ -113,6 +121,14 @@
 				B67815662503540E004F3FFF /* CAResponseModel.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		B65150F7251A0CD600668FE6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B65150F8251A0CEA00668FE6 /* Int+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B65BFD7F2518D18C0087EEC7 /* Messages */ = {
@@ -170,6 +186,7 @@
 				B6B6013C24F0FFD2000FB4A7 /* Main */,
 				B63A230424F109840028A20F /* Chat */,
 				B63A230B24F10E010028A20F /* Network */,
+				B65150F7251A0CD600668FE6 /* Extensions */,
 				B6B6013924F0FDA3000FB4A7 /* Supporting Files */,
 			);
 			path = CorporateAI;
@@ -192,6 +209,7 @@
 				B6B6012824EEC79A000FB4A7 /* CAMainViewController.swift */,
 				B6B6013A24F0FDD8000FB4A7 /* CAMainTableViewController.swift */,
 				B6781568250355E4004F3FFF /* CAMainViewModel.swift */,
+				B65150FA251A10F000668FE6 /* CAWebViewController.swift */,
 				B6B6013D24F10001000FB4A7 /* TableViewCell */,
 				B65C1C522515C21100CFD476 /* CollectionViewCell */,
 			);
@@ -330,6 +348,7 @@
 				B6B6013F24F10027000FB4A7 /* CAMainHeadTableViewCell.swift in Sources */,
 				B63A230124F1014D0028A20F /* CAMainNationTableViewCell.swift in Sources */,
 				B65BFD892518D2530087EEC7 /* CAChatViewController.swift in Sources */,
+				B65150F9251A0CEA00668FE6 /* Int+.swift in Sources */,
 				B6781569250355E4004F3FFF /* CAMainViewModel.swift in Sources */,
 				B65BFD872518D21B0087EEC7 /* CAChartMessageTableViewCell.swift in Sources */,
 				B65C1C542515C22D00CFD476 /* CARankCollectionViewCell.swift in Sources */,
@@ -339,6 +358,7 @@
 				B63A230824F10B9B0028A20F /* CAURLString.swift in Sources */,
 				B6B6012524EEC79A000FB4A7 /* AppDelegate.swift in Sources */,
 				B6710FE42516F76100BB3A4E /* CAChatVoiceViewController.swift in Sources */,
+				B65150FB251A10F000668FE6 /* CAWebViewController.swift in Sources */,
 				B6B6013B24F0FDD8000FB4A7 /* CAMainTableViewController.swift in Sources */,
 				B65BFD832518D1D60087EEC7 /* CABotMessageTableViewCell.swift in Sources */,
 				B67815672503540E004F3FFF /* CAResponseModel.swift in Sources */,

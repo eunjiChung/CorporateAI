@@ -29,7 +29,6 @@ enum CACoronaAPI {
     case oversea
     case localOccur(city: String)
     case localDef(city: String)
-    case rank
 }
 
 extension CACoronaAPI: TargetType {
@@ -45,20 +44,19 @@ extension CACoronaAPI: TargetType {
         case .oversea:                      return "/crn/oversea"
         case .localOccur(_):                return "/crn/local/occ"
         case .localDef(_):                  return "/crn/local/def"
-        case .rank:                         return "/crn/rank"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .main, .local, .domestic, .oversea, .localOccur, .localDef, .rank:
+        case .main, .local, .domestic, .oversea, .localOccur, .localDef:
             return .post
         }
     }
 
     var task: Task {
         switch self {
-        case .main, .local, .domestic, .oversea, .rank:
+        case .main, .local, .domestic, .oversea:
             return .requestPlain
 
         case .localOccur(let city), .localDef(let city):
@@ -72,12 +70,10 @@ extension CACoronaAPI: TargetType {
     }
 
     var headers: [String: String]? {
-//        let userAgent: String = KMUserDefaultsManager.shared.userAgent ?? ""
         let param = [
             "Content-Type": "application/json",
             "Authorization": "ai_company"
         ]
-
         return param
     }
 }
