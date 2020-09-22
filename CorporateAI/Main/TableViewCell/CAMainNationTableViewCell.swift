@@ -64,13 +64,18 @@ final class CAMainNationTableViewCell: UITableViewCell {
             .bind(to: totalCount.rx.text)
             .disposed(by: disposeBag)
 
-        chartModel.map { model in
-            model.nationList.map({ BarChartDataEntry(x: Double($0.createDt)!, yValues: [100, 200], data: nil) })
+        chartModel.map { model -> [BarChartDataEntry] in
+            var chartEntry = [BarChartDataEntry]()
+            // https://stackoverflow.com/questions/39049188/how-to-add-strings-on-x-axis-in-ios-charts
+            for (index, nation) in model.nationList.enumerated() {
+                chartEntry.append(BarChartDataEntry(x: Double(index), yValues: [Double(nation.localOccCnt), Double(nation.overFlowCnt)], data: nil))
+            }
+            return chartEntry
         }
         .map {
             let bar = BarChartDataSet(entries: $0)
             bar.colors = [#colorLiteral(red: 0.4549019608, green: 0.7529411765, blue: 0.9882352941, alpha: 1), #colorLiteral(red: 0.1098039216, green: 0.4941176471, blue: 0.8392156863, alpha: 1)]
-            bar.stackLabels = ["111", "222"]
+            bar.stackLabels = ["국내발생", "해외유입"]
             let data = BarChartData()
             data.addDataSet(bar)
             return data
@@ -80,25 +85,11 @@ final class CAMainNationTableViewCell: UITableViewCell {
             self.chartView.data = $0
         })
             .disposed(by: disposeBag)
+
+        hideGrids()
     }
 
-    private func setChartModel() {
-        var chartEntry = [BarChartDataEntry]()
-        var numbers = 0...12
-
-        for i in numbers {
-            let value = BarChartDataEntry(x: Double(i), yValues: [2.0, 4.0], data: "groupChart")
-            chartEntry.append(value)
-        }
-
-        let bar1 = BarChartDataSet(entries: chartEntry, label: "Number")
-        bar1.colors = [#colorLiteral(red: 0.4549019608, green: 0.7529411765, blue: 0.9882352941, alpha: 1), #colorLiteral(red: 0.1098039216, green: 0.4941176471, blue: 0.8392156863, alpha: 1)]
-        bar1.stackLabels = ["111", "222"]
-
-        let data = BarChartData()
-        data.addDataSet(bar1)
-
-        chartView.data = data
+    private func hideGrids() {
         chartView.leftAxis.drawAxisLineEnabled = false
         chartView.leftAxis.drawGridLinesEnabled = false
         chartView.leftAxis.gridColor = .clear

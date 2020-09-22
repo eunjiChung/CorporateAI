@@ -49,3 +49,9 @@ struct CANationModel: Decodable {
     var localOccCnt: Int
     var overFlowCnt: Int
 }
+
+struct CADialogModel: Codable {
+    var session: Int
+    var text: String
+}
+

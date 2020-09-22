@@ -34,9 +34,7 @@ final class CARankCellViewModel {
     var itemsObservable = PublishSubject<[CARankSectionModel]>()
 
     // MARK: - Init
-    init() {
-
-    }
+    init() { }
 
     // MARK: - Private Methods
     private func bindToList() {

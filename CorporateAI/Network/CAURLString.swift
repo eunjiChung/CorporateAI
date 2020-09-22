@@ -24,11 +24,7 @@ struct CAURLString {
 enum CACoronaAPI {
     case main
     case local
-
-    case domestic
-    case oversea
-    case localOccur(city: String)
-    case localDef(city: String)
+    case dialog(model: CADialogModel)
 }
 
 extension CACoronaAPI: TargetType {
@@ -39,29 +35,23 @@ extension CACoronaAPI: TargetType {
         switch self {
         case .main:                         return "/main"
         case .local:                        return "/local"
-
-        case .domestic:                     return "/crn"
-        case .oversea:                      return "/crn/oversea"
-        case .localOccur(_):                return "/crn/local/occ"
-        case .localDef(_):                  return "/crn/local/def"
+        case .dialog(_):                    return "/dialogflow"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .main, .local, .domestic, .oversea, .localOccur, .localDef:
+        case .main, .local, .dialog:
             return .post
         }
     }
 
     var task: Task {
         switch self {
-        case .main, .local, .domestic, .oversea:
+        case .main, .local:
             return .requestPlain
-
-        case .localOccur(let city), .localDef(let city):
-            let param = ["city": city]
-            return .requestParameters(parameters: param, encoding: URLEncoding.default)
+        case .dialog(let model):
+            return .requestJSONEncodable(model)
         }
     }
 
