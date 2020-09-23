@@ -24,7 +24,6 @@ class CAMainViewController: UIViewController {
         return .lightContent
     }
     
-    
     // MARK: - Private Methods
     private func initView() {
         recordButton.layer.cornerRadius = recordButton.bounds.size.width / 2

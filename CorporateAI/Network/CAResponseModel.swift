@@ -8,36 +8,37 @@
 
 import Foundation
 
-struct CAResultModel<T: Decodable>: Decodable {
+struct CAResultModel: Decodable {
     var code: ResponseCode
     var message: String
-    var result: CAResultMeta<T>
+    var result: CAMainModel
 }
 
 struct CAResultMeta<T: Decodable>: Decodable {
-    var resultMessage: T
+    var resultData: T
+    var resultMessage: String
 }
 
 struct CAMainModel: Decodable {
     var defCnt: Int
     var incDec: String
     var localOccCnt: Int
-    var locals: [CALocalModel]
-    var nations: CANationsModel
+    var locals: [CADomesticModel]
+    var nations: CAAbroadModel
     var overFlowCnt: Int
     var standardDt: String
 }
 
-struct CALocalModel: Decodable {
+struct CADomesticModel: Decodable {
     var defCnt: Int
     var gubun: String
     var incDec: String
     var localOccCnt: Int
     var overFlowCnt: Int
-    var qurRate: String
+    var qurRate: Double
 }
 
-struct CANationsModel: Decodable {
+struct CAAbroadModel: Decodable {
     var gubun: String
     var nationList: [CANationModel]
 }
@@ -54,4 +55,5 @@ struct CADialogModel: Codable {
     var session: Int
     var text: String
 }
+
 

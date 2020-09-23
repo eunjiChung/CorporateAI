@@ -36,7 +36,9 @@ final class CAMainNationTableViewCell: UITableViewCell {
 
     var total = PublishSubject<Int>()
     var increase = PublishSubject<Int>()
-    var chartModel = PublishSubject<CANationsModel>()
+    var chartModel = PublishSubject<CAAbroadModel>()
+
+    var xString = [String]()
 
     var disposeBag = DisposeBag()
 
@@ -66,9 +68,9 @@ final class CAMainNationTableViewCell: UITableViewCell {
 
         chartModel.map { model -> [BarChartDataEntry] in
             var chartEntry = [BarChartDataEntry]()
-            // https://stackoverflow.com/questions/39049188/how-to-add-strings-on-x-axis-in-ios-charts
             for (index, nation) in model.nationList.enumerated() {
                 chartEntry.append(BarChartDataEntry(x: Double(index), yValues: [Double(nation.localOccCnt), Double(nation.overFlowCnt)], data: nil))
+                self.xString.append(nation.createDt)
             }
             return chartEntry
         }
@@ -80,13 +82,21 @@ final class CAMainNationTableViewCell: UITableViewCell {
             data.addDataSet(bar)
             return data
         }
-        .asObservable()
-        .subscribe(onNext: {
-            self.chartView.data = $0
+        .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+        .subscribe(onNext: { data in
+            self.setValue(data)
         })
             .disposed(by: disposeBag)
 
         hideGrids()
+    }
+
+    private func setValue(_ data: BarChartData) {
+        self.chartView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: {(index, _) in
+            return self.xString[Int(index)]
+        })
+        self.chartView.xAxis.setLabelCount(self.xString.count, force: true)
+        self.chartView.data = data
     }
 
     private func hideGrids() {

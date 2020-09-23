@@ -24,7 +24,7 @@ struct CARankSectionModel {
 final class CARankCellViewModel {
 
     // MARK: - Properties
-    var rankModel: [CALocalModel]? {
+    var rankModel: [CADomesticModel]? {
         didSet {
             bindToList()
             generateMain()
@@ -41,7 +41,7 @@ final class CARankCellViewModel {
         guard let rankModel = self.rankModel, !rankModel.isEmpty else { return }
         var result: [RankModel] = []
         rankModel.forEach {
-            result.append(RankModel(location: $0.gubun, percent: Double($0.qurRate)!, total: $0.defCnt, increase: Int($0.incDec)!))
+            result.append(RankModel(location: $0.gubun, percent: $0.qurRate, total: $0.defCnt, increase: Int($0.incDec)!))
         }
         ranks = result
     }

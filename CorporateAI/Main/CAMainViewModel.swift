@@ -32,9 +32,9 @@ final class CAMainViewModel {
         _ = CANetworkAdapter.requestRx(target: CACoronaAPI.main)
             .subscribe(onNext: { data in
                 do {
-                    let model = try JSONDecoder().decode(CAResultModel<CAMainModel>.self, from: data)
+                    let model = try JSONDecoder().decode(CAResultModel.self, from: data)
                     let result = model.result
-                    self.generateMain(model: result.resultMessage)
+                    self.generateMain(model: result)
                 } catch {
                     print("❤️", error.localizedDescription)
                 }

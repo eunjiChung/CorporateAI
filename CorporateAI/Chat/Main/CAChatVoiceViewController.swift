@@ -85,8 +85,7 @@ final class CAChatVoiceViewController: UIViewController {
         layer0.startPoint = CGPoint(x: 0.25, y: 0.5)
         layer0.endPoint = CGPoint(x: 0.75, y: 0.5)
         layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.22, c: -0.22, d: 0, tx: 0.61, ty: 0))
-        layer0.bounds = backgroundView.bounds.insetBy(dx: -0.5*backgroundView.bounds.size.width, dy: -0.5*view.bounds.size.height)
-        layer0.position = backgroundView.center
+        layer0.frame = backgroundView.frame
         backgroundView.layer.addSublayer(layer0)
     }
 

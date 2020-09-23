@@ -42,7 +42,7 @@ final class CAMainTableViewController: UIViewController, UITableViewDelegate {
                     return cell
                 case .rank:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CAMainRankingTableViewCell.identifier) as? CAMainRankingTableViewCell else { return UITableViewCell() }
-                    if let rankModel = element.model as? [CALocalModel] {
+                    if let rankModel = element.model as? [CADomesticModel] {
                         cell.viewModel.rankModel = rankModel
                     }
                     return cell
